@@ -324,6 +324,47 @@ header {
   }
 }
 
+.drawer-list {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  transform: translate(100vw, 0);
+  /* ie workaround */
+  -ms-transform: translatex(-100vw);
+  box-sizing: border-box;
+  pointer-events: none;
+  padding-top: 125px;
+  transition: width 475ms ease-out, transform 450ms ease,
+    border-radius 0.8s 0.1s ease;
+  border-bottom-left-radius: 100vw;
+  background-color: #3d88ce;
+  background-color: rgba(12, 106, 194, 0.8);
+}
+@media (min-width: 768px) {
+  .drawer-list {
+    width: 40vw;
+  }
+}
+input.hamburger:checked ~ .drawer-list {
+  transform: translatex(0);
+  border-bottom-left-radius: 0;
+}
+
+label.hamburger {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  display: block;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
 .page_1 {
   padding: 0 0 7rem 0;
   min-height: 90vh;

@@ -117,9 +117,7 @@
             </nav>              
           </div>
           <div class="hidden-btn col-6 col-lg-1 ">
-            <!-- <a href="#" class="hidden-btn__pay">Оформить</a> -->
-            <input id="hamburger" class="hamburger" type="checkbox" />
-            <label class="hamburger" for="hamburger"></label>
+            <div href="#" id="btn__pay" class="hidden-btn__pay">Оформить</div>
           </div>
         </div>
       </div>
@@ -835,7 +833,45 @@
       </a>
     </div>
 
-    <section class="drawer-list"></section>
+    <section id="drawer" class="drawer">
+      <img id="close" class='close' src=".//img/tools/close.svg" alt="">
+          <form action="" class="form">
+            <h3>Форма заказа</h3>
+            <div class="">
+              <h4 class="">Ваше имя: * <input type="text" placeholder="Иванов Иван"></h4>
+              <h4 class="">Ваш email: * <input type="email" placeholder="username@site.ru"></h4>
+            </div>
+            <div>
+              <h4 class="form__title">Выберите тариф</h4>
+              <select name="select">
+                <option value="value1">Mini (Минимальный)</option> 
+                <option value="value2" selected>Basic (Базовый)</option>
+                <option value="value3">Pro (Продвинутый)</option>
+              </select>
+            </div>
+            <div>
+              <h4 class="form__title">Краткое описание ТЗ</h4>
+              <p class="form__desc">
+                  Коротко опишите техническое задание, что должен рассчитывать калькулятор. Разместите ссылки на похожие калькуляторы, если такие есть.
+              </p>
+              <textarea rows="8" cols="35" name="text"></textarea>
+              <input type="file" name="f" multiple="multiple" accept="image/jpeg,image/png,image/gif,application/msword,application/pdf,application/rtf" title="Загрузите одну или несколько фотографий"> 
+            </div>
+            <div>
+              <p class="form__desc">
+                * —  Обязательные для заполнения поля
+              </p>
+              <p class="form__desc">
+                После отправки мы свяжемся с вами в течение суток.
+              </p>
+              <p class="form__desc">
+                Нажимая на кнопку, вы соглашаетесь на обработку персональных данных и с пользовательским соглашением.
+              </p>
+            </div>
+            <input type="submit" value="Отправить"></input>
+
+          </form>
+    </section>
 
 
     <!-- <div class="parent">
@@ -853,6 +889,19 @@
     <script src="js/tabs.js"></script>
 
     <script>
+
+    const btn__pay = document.getElementById('btn__pay');
+    const drawer = document.getElementById('drawer');
+    const close = document.getElementById('close');
+    btn__pay.addEventListener('click', function(){
+      drawer.classList.toggle('active');
+      header.classList.toggle('active');
+    }); 
+    close.addEventListener('click', function(){
+      drawer.classList.toggle('active');
+      header.classList.toggle('active');
+    }); 
+    
 
     // Tips Navigation
     const anchors = document.querySelectorAll('.scroll-to'),
@@ -890,7 +939,7 @@
       logo = document.getElementsByClassName("logo");
 
       window.addEventListener('scroll', function(e) {
-        if(this.pageYOffset > 100 ){
+        if(this.pageYOffset > 100 && !drawer.classList.contains('active')){
           header.classList.add('active');
         }
         else if(this.pageYOffset == 0){

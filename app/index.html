@@ -117,7 +117,7 @@
             </nav>              
           </div>
           <div class="hidden-btn col-6 col-lg-1 ">
-            <div href="#" id="btn__pay" class="hidden-btn__pay">Оформить</div>
+            <div href="#" id="btn__pay" class="open hidden-btn__pay">Оформить</div>
           </div>
         </div>
       </div>
@@ -498,7 +498,7 @@
           <div>
             <img class="create__img" src="./img/we_create_calc.svg" alt="">
           </div>
-          <a class="create__btn" href="#">Заказать</a> 
+          <a class="create__btn open" href="#">Заказать</a> 
         </div>
       </div>
     </section>
@@ -844,9 +844,9 @@
             <div>
               <h4 class="form__title">Выберите тариф</h4>
               <select name="select">
-                <option value="value1">Mini (Минимальный)</option> 
-                <option value="value2" selected>Basic (Базовый)</option>
-                <option value="value3">Pro (Продвинутый)</option>
+                <option class="option" value="value1">Mini (Минимальный)</option> 
+                <option class="option" value="value2" selected>Basic (Базовый)</option>
+                <option class="option" value="value3">Pro (Продвинутый)</option>
               </select>
             </div>
             <div>
@@ -890,16 +890,73 @@
 
     <script>
 
-    const btn__pay = document.getElementById('btn__pay');
+    const open = document.querySelectorAll('.open');
+    const tariffButton = document.querySelectorAll('.tariff-box__button');
+    const option = document.querySelectorAll('.option');
     const drawer = document.getElementById('drawer');
     const close = document.getElementById('close');
-    btn__pay.addEventListener('click', function(){
-      drawer.classList.toggle('active');
-      header.classList.toggle('active');
-    }); 
+
+    for (let t = 0; t<open.length; t++){
+      open[t].addEventListener('click', function(e){
+        e.preventDefault();
+        if(drawer.classList.contains('active')){
+          drawer.classList.remove('active');
+          header.classList.add('active');
+        }
+        else{
+          document.body.classList.add('non');
+          drawer.classList.add('active');
+          header.classList.remove('active');
+        }
+      }); 
+
+     
+
+
+    }
+
+    for (let m = 0; m<tariffButton.length; m++){ 
+      tariffButton[m].addEventListener('click', function(e){
+        if(!drawer.classList.contains('active') && !tariffButton[m].hasAttribute('selected')){
+          for (let n = 0; n<option.length; n++){
+            option[n].removeAttribute('selected');
+          }
+          option[m].setAttribute('selected', 'selected');
+          document.body.classList.add('non');
+          drawer.classList.add('active');
+          header.classList.remove('active'); 
+        }
+        // // if(!drawer.classList.contains('active') && t == 1){
+        // //   for (let n = 0; n<option.length; n++){
+        // //     option[n].removeAttribute('selected');
+        // //   }
+        // //   option[t].setAttribute('selected', 'selected');
+        // //   document.body.classList.add('non');
+        // //   drawer.classList.add('active');
+        // //   header.classList.remove('active'); 
+        // // }
+        // // if(!drawer.classList.contains('active') && t == 2){
+        // //   for (let n = 0; n<option.length; n++){
+        // //     option[n].removeAttribute('selected');
+        // //   }
+        // //   option[t].setAttribute('selected', 'selected');
+        // //   document.body.classList.add('non');
+        // //   drawer.classList.add('active');
+        // //   header.classList.remove('active'); 
+        // // }
+        // else{
+        //   drawer.classList.remove('active');
+        //   header.classList.add('active');
+        // }
+      }); 
+
+    }
+
+
     close.addEventListener('click', function(){
-      drawer.classList.toggle('active');
-      header.classList.toggle('active');
+      document.body.classList.remove('non');
+      drawer.classList.remove('active');
+      header.classList.add('active');
     }); 
     
 

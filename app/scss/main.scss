@@ -152,7 +152,7 @@ h3 {
   font-size: 36px;
   color: #fff;
   text-align: center;
-  margin: 20px 0 50px 0;
+  margin: 0 0 50px 0;
   letter-spacing: 3px;
 }
 h4 {
@@ -187,11 +187,19 @@ body {
   background: #f3f3f3;
   cursor: default;
 }
+.non {
+  @media only (max-width: 768px) {
+    overflow: hidden;
+  }
+}
 
 .dots {
   position: fixed;
   right: 50px;
   top: 40%;
+  @media only (max-width: 992px) {
+    display: none;
+  }
   &-href {
     color: #2f485e;
     display: block;
@@ -227,37 +235,39 @@ header {
   @media only (max-width: 992px) {
     padding: 0.5rem 1rem;
   }
-  &.active {
-    position: sticky;
-    box-shadow: #464444 2323 0 0 3px 1px;
-    background: rgba(75, 179, 163, 0.9);
-    box-shadow: #000 0px 0px 5px -2px;
+  @media only (min-width: 576px) {
+    &.active {
+      position: sticky;
+      box-shadow: #464444 2323 0 0 3px 1px;
+      background: rgba(75, 179, 163, 0.9);
+      box-shadow: #000 0px 0px 5px -2px;
 
-    .menu {
-      &__item {
-        color: #ffffff;
-        &::before {
-          background: rgb(255, 255, 255);
-        }
-        &:hover::before {
-          width: 100%;
-        }
-        &.active::before {
-          width: 100%;
+      .menu {
+        &__item {
+          color: #ffffff;
+          &::before {
+            background: rgb(255, 255, 255);
+          }
+          &:hover::before {
+            width: 100%;
+          }
+          &.active::before {
+            width: 100%;
+          }
         }
       }
-    }
-    .hidden-btn {
-      display: flex;
+      .hidden-btn {
+        display: flex;
 
-      &__pay {
-        background: #f3f3f3;
-        color: #232323;
-        box-shadow: #417f76 0 0 5px 1px;
+        &__pay {
+          background: #f3f3f3;
+          color: #232323;
+          box-shadow: #417f76 0 0 5px 1px;
 
-        &:hover {
-          color: #000;
-          box-shadow: #fff 0 0 3px 1px;
+          &:hover {
+            color: #000;
+            box-shadow: #fff 0 0 3px 1px;
+          }
         }
       }
     }
@@ -325,6 +335,7 @@ header {
       background: #245767;
       color: #fff;
       transition: box-shadow 400ms;
+      cursor: pointer;
       &:hover {
         // transform: scale3d(1.087, 1.087, 1);
         box-shadow: #3a3737 1px 1px 5px -1px;

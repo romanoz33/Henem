@@ -711,8 +711,9 @@ header {
 
 .page_3 {
   // padding: 7rem 0 3rem 0;
-  background: #204956 url(../img/pattern/pattern_calc_white.svg);
-  background-attachment: fixed;
+  background: #204956 url(../img/pattern/pattern_calc_white.svg) repeat center
+    center fixed;
+  // background-attachment: fixed;
   background-size: 18%;
 
   .examples {

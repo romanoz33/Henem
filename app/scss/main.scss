@@ -117,7 +117,7 @@ a {
     }
   }
   &.skew {
-    transform: translate3d(0, 0, 0) skewY(10deg) rotate(-90deg);
+    transform: translate3d(0, 0, 0) skewY(-7deg) rotate(-90deg);
   }
 }
 
@@ -235,7 +235,7 @@ header {
   @media only (max-width: 992px) {
     padding: 0.5rem 1rem;
   }
-  @media only (min-width: 576px) {
+  @media only (min-width: 768px) {
     &.active {
       position: sticky;
       box-shadow: #464444 2323 0 0 3px 1px;
@@ -711,7 +711,9 @@ header {
 
 .page_3 {
   // padding: 7rem 0 3rem 0;
-  background: #204956;
+  background: #204956 url(../img/pattern/pattern_calc_white.svg);
+  background-attachment: fixed;
+  background-size: 18%;
 
   .examples {
     &__title {
@@ -913,7 +915,9 @@ header {
 
 .page_5 {
   // padding: 7rem 0 0 0;
-  background: #fff;
+  background: rgb(255, 255, 255) url(../img/pattern/playstation-pattern.png);
+  background-attachment: fixed;
+
   @media only (max-width: 768px) {
     padding: 3rem 0;
   }
